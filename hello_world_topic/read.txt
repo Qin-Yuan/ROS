@@ -1,0 +1,4 @@
+ROS——Topic通信
+msg里面是共享参数 ，用于node之间通信
+hello_pub.cpp 为发布者，发布消息：hello world
+hello_sub.cpp 为接受者，接受发布者发布的消息
