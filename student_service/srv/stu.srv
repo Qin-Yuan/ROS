@@ -1,0 +1,5 @@
+string r_name   #端横线上方为client请求的数据
+int32 r_age
+---             #端横线下方为server回复的数据 
+string s_name
+int32 s_age
