@@ -1,0 +1,16 @@
+<launch>
+    <!-- 全局参数 name-->
+    <param name="name" value="Qinyuan"/>
+    
+    <!-- 全局参数 name 定义在节点内-->
+    <!--
+        node描述参数说明：
+        name: 节点初始化 init()函数中命名的节点名称
+        pkg：ros包文件名
+        type：节点的可执行文件，去掉.cpp、.py的文件名
+        output：节点的标准信息输出到屏幕上
+    -->
+    <node name="stu_param" pkg="student_param" type="stu_param" output="screen">
+    <param name="name" value="Benny" />
+    </node>
+</launch>
