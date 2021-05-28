@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<robot name="f4">
+
+    <link name="base_footprint">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="base_footprint_joint" type="fixed">
+        <origin xyz="0 0 0.01" rpy="0 0 0" />
+        <parent link="base_footprint"/>
+        <child link="base_link" />
+    </joint>
+
+    <!--base link-->
+	<link name="base_link">
+    	<visual>
+            <origin xyz=" 0 0 0" rpy="0 0 0" />
+            <geometry>
+                <!--        L    W    H       -->
+                <box size="0.21 0.17 0.05"/>   
+            </geometry>
+            <material name="blue">
+                <color rgba="0.3 0.4 0.8 1"/>
+            </material>
+   	 	</visual>
+  	</link>
+    
+<!--back-->
+
+    <!--base_left_motor_joint-->
+   	<joint name="base_left_motor_joint" type="fixed">
+        <origin xyz="-0.08 0.075 -0.01" rpy="0 0 0" />
+        <parent link="base_link"/>
+        <child link="left_motor"/>
+   	</joint>
+
+    <!--left_motor_link-->
+  	<link name="left_motor">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5707 0 0" />
+            <geometry>
+                <cylinder radius="0.005" length="0.05"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="0.75 0.75 0.75 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <!--left_wheel_joint-->
+	<joint name="left_wheel_joint" type="continuous">
+  		<origin xyz="0 0.025 0" rpy="0 0 0 "/>
+  		<parent link="left_motor"/>
+	  	<child link="left_wheel_link"/>
+ 	 	<axis xyz="0 1 0"/>
+ 	</joint>
+
+    <!--left_wheel_link-->
+	<link name="left_wheel_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5707 0 0" />
+            <geometry>
+                <cylinder radius="0.033" length="0.017"/>
+            </geometry>
+            <material name="white">
+                <color rgba="1 1 1 0.9"/>
+            </material>
+      	</visual>
+ 	</link>
+
+    <!--base_right_motor_joint-->
+ 	<joint name="base_right_motor_joint" type="fixed">
+        <origin xyz="-0.08 -0.075 -0.01" rpy="0 0 0" />
+        <parent link="base_link"/>
+        <child link="right_motor"/>
+   	</joint>
+
+    <!--right_motor-->
+	<link name="right_motor">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5707 0 0" />
+            <geometry>
+                <cylinder radius="0.005" length="0.05"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="0.75 0.75 0.75 1"/>
+            </material>
+        </visual>
+ 	</link>
+
+    <!--right_wheel_joint--> 
+ 	<joint name="right_wheel_joint" type="continuous">
+   			<origin xyz="0 -0.025 0" rpy="0 0 0 "/>
+   			<parent link="right_motor"/>
+   			<child link="right_wheel_link"/>
+   			<axis xyz="0 1 0"/>
+   	</joint>
+
+    <!--right_wheel_link-->
+	<link name="right_wheel_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5707 0 0" />
+            <geometry>
+                <cylinder radius="0.033" length="0.017"/>
+            </geometry>
+            <material name="white">
+                <color rgba="1 1 1 0.9"/>
+            </material>
+        </visual>
+  	</link>
+
+<!--front-->
+
+    <!--base_l_motor_joint-->
+   	<joint name="base_l_motor_joint" type="fixed">
+     		 <origin xyz="0.08 0.075 -0.01" rpy="0 0 0" />
+      		 <parent link="base_link"/>
+      		 <child link="l_motor"/>
+   	</joint>
+
+    <!--l_motor_link-->
+  	<link name="l_motor">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5707 0 0" />
+            <geometry>
+                <cylinder radius="0.005" length="0.05"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="0.75 0.75 0.75 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <!--l_wheel_joint-->
+	<joint name="l_wheel_joint" type="continuous">
+  		<origin xyz="0 0.025 0" rpy="0 0 0 "/>
+  		<parent link="l_motor"/>
+	  	<child link="l_wheel_link"/>
+ 	 	<axis xyz="0 1 0"/>
+ 	</joint>
+
+    <!--l_wheel_link-->
+	<link name="l_wheel_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5707 0 0" />
+            <geometry>
+                <cylinder radius="0.033" length= "0.017"/>
+            </geometry>
+            <material name="white">
+                <color rgba="1 1 1 0.9"/>
+            </material>
+      	</visual>
+ 	</link>
+
+    <!--base_r_motor_joint-->
+ 	<joint name="base_r_motor_joint" type="fixed">
+        <origin xyz="0.08 -0.075 -0.01" rpy="0 0 0" />
+        <parent link="base_link"/>
+        <child link="r_motor"/>
+   	</joint>
+
+    <!--r_motor-->
+	<link name="r_motor">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5707 0 0" />
+            <geometry>
+                <cylinder radius="0.005" length= "0.05"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="0.75 0.75 0.75 1"/>
+            </material>
+        </visual>
+ 	</link>
+
+    <!--r_wheel_joint--> 
+ 	<joint name="r_wheel_joint" type="continuous">
+   			<origin xyz="0 -0.025 0" rpy="0 0 0 "/>
+   			<parent link="r_motor"/>
+   			<child link="r_wheel_link"/>
+   			<axis xyz="0 1 0"/>
+   	</joint>
+
+    <!--r_wheel_link-->
+    <link name="r_wheel_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5707 0 0" />
+            <geometry>
+                <cylinder radius="0.033" length="0.017"/>
+            </geometry>
+            <material name="white">
+                <color rgba="1 1 1 0.9"/>
+            </material>
+        </visual>
+    </link>
+</robot>
