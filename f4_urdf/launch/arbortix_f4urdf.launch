@@ -1,0 +1,26 @@
+<launch>
+	<!-- 直接调用xacro解释器显示xacro模型 -->
+	<param name="robot_description" textfile="$(find f4_urdf)/urdf/f4.urdf"/>
+
+	<!-- 设置GUI参数，显示关节控制插件 -->
+	<param name="gui" value="true"/>
+	
+    <!-- arbotix -->
+    <node name="arbotix" pkg="arbotix_python" type="arbotix_driver" output="screen">
+        <rosparam file="$(find f4_urdf)/config/f4.yaml" command="load" />
+        <param name="sim" value="true"/>
+    </node>
+
+	<!-- 运行joint_state_publisher节点，发布机器人的关节状态  -->
+	<node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+	
+	<!-- 运行robot_state_publisher节点，发布tf  -->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" >
+        <!-- 设置频率 -->
+        <param name="publish_frequency" type="double" value="20.0" />
+    </node>
+    
+	<!-- 运行rviz可视化界面 -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find f4_urdf)/config/arbotix_f4urdf.rviz" required="true" />
+
+</launch>
